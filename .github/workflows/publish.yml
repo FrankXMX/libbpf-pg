@@ -58,14 +58,4 @@ jobs:
     - name: build package
       run:  make build
 
-    - name: Publish
-      if:   github.event_name == 'push' && github.ref == 'refs/heads/master'
-      uses: softprops/action-gh-release@v1
-      with:
-          files: |
-            src/bootstrap
-          prerelease: false
-          tag_name: ${{ steps.set_version.outputs.result }}
-          generate_release_notes: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
